@@ -1,0 +1,34 @@
+This package includes two files from PhpFit whith the following patches:
+
+Parse.php 
+	line 238-241 ereg_replace replaced by str_replace
+	line 273 ereg_replace replaced by str_replace
+Fixture.php
+	line 326-333 adapter is null now checked first because info on empty cell needs adapter
+
+these modifications are Copyright (c) 2010-2012 H. Verhoeven Beheer BV Groningen Nederland.
+these modifications are Licensed under the GNU General Public License version 3 or later.
+
+these modifications are free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+The original code is Copyright (c) 2002-2005 Cunningham & Cunningham, Inc.
+Released under the terms of the GNU General Public License version 2 or later.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+  IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING
+WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MODIFIES AND/OR CONVEYS
+THE PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES, INCLUDING ANY
+GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE
+USE OR INABILITY TO USE THE PROGRAM (INCLUDING BUT NOT LIMITED TO LOSS OF
+DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD
+PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER PROGRAMS),
+EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF
+SUCH DAMAGES.
+
