@@ -2,9 +2,8 @@
 require_once 'shelf_ColumnFixture.php';
 
 /**
- * Copyright (c) 2010-2011 MetaClass Groningen Nederland
- * Licensed under the GNU Lesser General Public License version 3 or later.
- * and GNU General Public License version 3 or later.
+ * Implementation Copyright (c) 2010-2012 H. Verhoeven Beheer BV, holding of MetaClass Groningen Nederland
+ * Licensed under the GNU General Public License version 3 or later.
  */
 class ColumnSetUp extends shelf_ColumnFixture {
 	
@@ -14,7 +13,7 @@ class ColumnSetUp extends shelf_ColumnFixture {
     public function exception($cell, $e) {
     	global $site;
     	$this->error($cell, $e->getMessage());
-    	$site->errorHandler->handleException($e);
+//    	$site->errorHandler->handleException($e);
     }
 
     public function setSystemUnderTest($param) {
@@ -44,6 +43,7 @@ class ColumnSetUp extends shelf_ColumnFixture {
     */
     public function doRow($row) {
     	$class = $this->getTargetClass();
+    	if (!class_exists($class)) throw new Exception("Class '$class' not found");
     	$this->setSystemUnderTest(new $class());
     	
     	parent::doRow($row);

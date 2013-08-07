@@ -1,9 +1,8 @@
 <?php 
 require_once 'PHPFIT_TypeAdapter_BeanTolerant.php';
 
-/** Copyright (c) 2010-2011 MetaClass Groningen Nederland
- * Licensed under the GNU Lesser General Public License version 3 or later.
- * and GNU General Public License version 3 or later.
+/** Copyright (c) 2010-2012 H. Verhoeven Beheer BV, holding of MetaClass Groningen Nederland
+ * Licensed under the General Public License version 3 or later.
  * 
  * Tolerant adapter for PhpPeanuts.
  * The types used for fields, method results and parameters must be 
@@ -31,7 +30,10 @@ class PHPFIT_TypeAdapter_PntTolerant extends PHPFIT_TypeAdapter_BeanTolerant {
 	
     function getPropertyValue() {
 		$nav = $this->getNavigation();
-		return $nav->evaluate($this->target);
+		
+		return $nav->isSingleValue() 
+			? $nav->evaluate($this->target)
+			: $nav->collectAllDistinct(array($this->target));
        }
 	
     function setPropertyValue($value) {
@@ -73,6 +75,10 @@ class PHPFIT_TypeAdapter_PntTolerant extends PHPFIT_TypeAdapter_BeanTolerant {
     function parseTyped($text, $type) {
     	global $site;
     	if ($text == 'null') return null;
+    	if ($text == 'infinity') {
+    		$inf = ValueValidator::getInfinity($type); //Alt 236 does not work in firefox on Win7
+    		if ($inf) return $inf;
+    	}
     	
     	if (isSet($this->stringConverter)) { 
     		$converter = $this->stringConverter;
@@ -83,6 +89,7 @@ class PHPFIT_TypeAdapter_PntTolerant extends PHPFIT_TypeAdapter_BeanTolerant {
 			$converter->type = $type;
     	}
 		$parsed = $converter->fromLabel($text);
+
 		if ($converter->error)
 			throw new Exception($converter->error);
 			

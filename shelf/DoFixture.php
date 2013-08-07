@@ -6,10 +6,8 @@ require_once('DoCells.php'); //in shelf folder
 require_once('shelf_ClassHelper.php');
 
 /**
- * @author Henk Verhoeven 2010-03-06 and later
- * Copyright (c) 2010-2011 MetaClass Groningen Nederland
- * Licensed under the GNU Lesser General Public License version 3 or later.
- * and GNU General Public License version 3 or later.
+ * Implementation Copyright (c) 2010-2012 H. Verhoeven Beheer BV, holding of MetaClass Groningen Nederland
+ * Licensed under the GNU General Public License version 3 or later.
  * 
  * Lightweight implementation of fitlibrary DoFixture
  *
@@ -63,7 +61,8 @@ class DoFixture extends PHPFIT_Fixture {
 	        }
 	    }
 	    $this->listener->tablesFinished($this->counts);
-	    self::clearSymbols();    
+	    $this->tearDown();
+	    self::clearSymbols();
 	}
 
 	protected function interpretTablesInit() {
@@ -72,6 +71,10 @@ class DoFixture extends PHPFIT_Fixture {
 	
     public function doTable($table) {
         $this->doRows($table->parts);
+    }
+    
+    protected function tearDown() {
+    	//default is to do nothing
     }
 	
     /**
@@ -126,6 +129,10 @@ class DoFixture extends PHPFIT_Fixture {
 	        $this->exception($cells, $e);
 	        return;
 	    }
+	     return $this->doneCells($doCells);
+	}
+	
+	function doneCells($doCells) {
         $result = $doCells->getResult();
 //print "\n".get_class($this).": "; print_r($result);        
 

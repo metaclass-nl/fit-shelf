@@ -3,7 +3,7 @@ INTRODUCTION
 Fit Shelf is a reimplementation in PHP of the functionality of Fit Library as 
 described in the book "Fit for developing Software" of Rick Mugridge
 and Ward Cunningham, mostly chapters 10 and 28. For usage documentation
-we refer to these chapters of this excellent book and http://fit.c2.com.
+i refer to these chapters of this excellent book and http://fit.c2.com.
 
 Fit shelf is not a port of Fit Library. The reason to reimplement was
 that the porting of the  1175 KB java source files of Fit Library 
@@ -13,38 +13,69 @@ As its name suggest is does not pretend to be a complete library,
 but rather a small shelf. But easyer to understand, use and port.
 And written in PHP!
 
-* not including CalculateFixture but including the extensions for phpPeanuts. 
-  Fit Shelf does not support (usage from) Fitnesse. Is not inteded to work the
-  same as Fit Library, only to work like descibed in the book, but with the 
-  special features as described below.
-
   
 INSTALLATION AND CONFIGURATION
 
-0. You need a http server with PHP 5.0 or higher
+0. You need a http server with PHP 5.0 or higher. For security reasons it should only be accessable 
+   to you and those who need to run tests.
 
-1. Download PhpFit from http://developer.berlios.de/projects/phpfit/
+1. Download or fetch PhpFit from https://github.com/metaclass-nl/phpfit
 
-2. Extract the PhpFit zip file into a folder on your http server
+2. Extract and/or upload the PhpFit files and folders into a folder on your http server
 
-3. To patch PhpFit, copy the files from the fit_shelf subfolder phpFit\PHPFIT
-   to the PHPFIT subfolder in the folder where you extracted PhpFit.
+3. Download or fetch Fit Shelf from https://github.com/metaclass-nl/fit-shelf
+
+4.  Extract and/or upload the shelf subfolder from the fit_shelf folder to a folder on your http server
+
+5. Edit the conf_shelf.php file in the script folder you copied in step 4 and correct the include paths
+   with respect to the locations of phpfit and the shelf folder on your server.
    
-4. Copy the shelf subfolder from the fit_shelf folder to a folder on your http server
-
-5. Copy the (files from the) script folder of the fit_shelf folder 
-   to a folder from which your http server serves files and runs php scripts
-   
-6. Edit the conf_shelf.php file you copied in step 5 and correct the include path
-   with respect to the locations of PhpFit and the shelf folder on your server.
-   If necessary make the folder in which phpFits output file $output is situated 
+6. If necessary make the folder in which phpFits output file $output is situated 
    writable for the  run-web.php script.
 
-7. Make a test that should run on Fit or Fit Shelf and put into the same folder as 
-   run-web.php or a subfolder.
+7. Enter the url on your http server to index.html from the script/book folder in your browser
 
-8. test your installation by requesting the script run-web.php?input_filename=book/tests/Fig2TestCloseRoomFails.html
+8. You should see some hyperlinks to some tests from the book. Click one that is not under development.
+
+
+TO RUN YOUR OWN TESTS
+
+9. Make your own fixtures folder (may be outside of the fit shelf folder)
+   and set $fixturesDir in conf_shelf.php to point to it.
    
+10. Upload you own Fixture file to your fixtures folder
+
+11. Make your own tests folder  (may be outside of the fit shelf folder)
+
+12. Upload your own test to your tests folder 
+   
+11. Enter the url in your browser to run-web.php?input_filename= folowed by the relative 
+    path from run-web.php to your test
+    
+12. You should see your own test results in your browser 
+
+
+RELEASE NOTES
+
+fit_shelf_1_0_beta2
+
+This beta has been tested sucessfully with the tests and fixtures of the 
+Historical Data Management (HDM) extension to the PhpPeanuts framework
+(The HDM framework is not freely available for download).
+
+The beta does not include CalculateFixture and SetupFixture.
+
+The beta does not include all examples ported from the tests described 
+in the book "Fit for developing Software". Please help by porting more
+tests that are meant to run on Fit Library.
+
+The Adapters should be refactored in order to support strict typing,
+see PHPFIT_TypeAdapter_PhpTolerant.php.
+Some smaller refactorings may be made with respect to reoccurring code.
+
+Modifications may be required for installation and autoloading with Composer.
+
+
    
 SPECIAL FEATURES
 
@@ -122,32 +153,11 @@ StingConverter instead of the PhpFit datatype adapters. This way all
 datatypes of phpPeanuts are supported.
 
 
-RELEASE NOTES
-
-This beta has been tested sucessfully with the tests and fixtures of the 
-Historical Data Management (HDM) extension to the PhpPeanuts framework
-(The HDM framework is not freely available for download).
-
-The beta does not include CalculateFixture. 
-
-The beta only includes two working examples ported from the tests described 
-in the book "Fit for developing Software". Please help by porting more
-tests that are meant to run on Fit Library.
-
-MetaClass is considering to replace the usage of PhpFit by the 
-PEAR package Testing/FIT (FIT for PHP http://gerd.exit0.net/testingFIT/ ).
-This may result in some adaptations of Shelf.
-
-The Adapters will be refactored in order to support strict typing,
-see PHPFIT_TypeAdapter_PhpTolerant.php.
-Some smaller refactorings may be made with respect to reoccurring code.
-
-
 SUPPORT (Dutch)
 
 MetaClass biedt hulp en ondersteuning binnen Nederland bij onderhoud 
 en ontwikkeling van software, tests en fixtures. 
-Voor meer informatie bel 050-3132736 of kijk op http://www.metaclass.nl/
+Voor meer informatie kijk op http://www.metaclass.nl/
 
 
 COPYRIGHT AND LICENCE
@@ -181,4 +191,9 @@ PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER PROGRAMS),
 EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGES.
 
+
+* not including CalculateFixture and SetupFixture but including the extensions for phpPeanuts. 
+  Fit Shelf does not support (usage from) Fitnesse. Is not inteded to work the
+  same as Fit Library, only to work like descibed in the book, but with the 
+  special features as described below.
 

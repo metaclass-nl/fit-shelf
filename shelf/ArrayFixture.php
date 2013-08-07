@@ -2,9 +2,8 @@
 require_once 'SetFixture.php';
 
 /**
- * Copyright (c) 2010-2011 MetaClass Groningen Nederland
- * Licensed under the GNU Lesser General Public License version 3 or later.
- * and GNU General Public License version 3 or later.
+ * Implementation Copyright (c) 2010-2012 H. Verhoeven Beheer BV, holding of MetaClass Groningen Nederland
+ * Licensed under the GNU General Public License version 3 or later.
  */
 class ArrayFixture extends SetFixture {
 

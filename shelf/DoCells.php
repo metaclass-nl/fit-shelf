@@ -1,9 +1,8 @@
 <?php
 
 /* 
- * Copyright (c) 2010-2011 MetaClass Groningen Nederland
- * Licensed under the GNU Lesser General Public License version 3 or later.
- * and GNU General Public License version 3 or later.
+ * Implementation Copyright (c) 2010-2012 H. Verhoeven Beheer BV, holding of MetaClass Groningen Nederland
+ * Licensed under the GNU General Public License version 3 or later.
  * 
  * Object of this class take care of reading and processing a single
  * action from the cells till (one before) the end (of the row)

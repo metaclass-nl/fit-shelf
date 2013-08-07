@@ -1,8 +1,7 @@
 <?php
 /**
- * Copyright (c) 2010-2011 MetaClass Groningen Nederland
- * Licensed under the GNU Lesser General Public License version 3 or later.
- * and GNU General Public License version 3 or later.
+ * Copyright (c) 2010-2012 H. Verhoeven Beheer BV, holding of MetaClass Groningen Nederland
+ * Licensed under the GNU General Public License version 3 or later.
  * 
  * PHPFIT has been ported from Java, a strong typed language with a single 
  * metamodel for the System Under Test (Beans). PHP is weakly typed, has automatic 
@@ -131,6 +130,18 @@ class PHPFIT_TypeAdapter_PhpTolerant extends PHPFIT_TypeAdapter {
         return strval($value);
 	}
     
+   /** @return boolean wheather the object has a member. Returns false if the member
+     * is not explicitly present, even if a magic method __get exist.
+     * @param object $object */
+    function hasMember() {
+    	//current implementation does not allow private properties, see ClassHelper::checkPropertyExists
+		return property_exists($this->target, $this->field);
+	}
+
+	function hasProperty() {
+		return $this->hasMember();
+	}
+	
 	/** Overridden to factor out getFieldValue
 	 * @return mixed
 	 */

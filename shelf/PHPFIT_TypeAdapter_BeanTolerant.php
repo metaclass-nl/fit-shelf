@@ -1,9 +1,9 @@
 <?php 
 require_once('PHPFIT_TypeAdapter_PhpTolerant.php');
 
-/** Copyright (c) 2010-2011 MetaClass Groningen Nederland
- * Licensed under the GNU Lesser General Public License version 3 or later.
- * and GNU General Public License version 3 or later.
+/*
+ * Copyright (c) 2010-2012 H. Verhoeven Beheer BV, holding of MetaClass Groningen Nederland
+ * Licensed under the GNU General Public License version 3 or later.
  * 
  * Tolerant adapter supporting beans-style properties. 
  * In Java the Beans standard describes getter and setter methods for properties 
@@ -42,15 +42,7 @@ class PHPFIT_TypeAdapter_BeanTolerant extends PHPFIT_TypeAdapter_PhpTolerant {
     	return $this->target->$getter();
     }
 
-    /** @return boolean wheather the object has a member. Returns false if the member
-     * is not explicitly present, even if a magic method __get exist.
-     * @param object $object */
-    function hasMember() {
-    	//current implementation does not allow private properties, see ClassHelper::checkPropertyExists
-		return property_exists($this->target, $this->field);
-	}
-
-    /** Sets the value of a field. @see ::getFieldValue
+     /** Sets the value of a field. @see ::getFieldValue
      * @param mixed $value
      * @precodition $this->field contains the name of the field
      */

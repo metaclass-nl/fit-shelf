@@ -4,9 +4,8 @@ require_once 'DoFixture.php';
 require_once('PHPFIT_TypeAdapter_PntTolerant.php'); //in shelf folder
 
 /* 
- * Copyright (c) 2010-2011 MetaClass Groningen Nederland
- * Licensed under the GNU Lesser General Public License version 3 or later.
- * and GNU General Public License version 3 or later.
+ * Implementation Copyright (c) 2010-2012 H. Verhoeven Beheer BV, holding of MetaClass Groningen Nederland
+ * Licensed under the GNU General Public License version 3 or later.
  * 
  * DoFixture Specialized for phpPeanuts.
  */
@@ -65,15 +64,42 @@ class PntDoFixture extends DoFixture {
 		
 		return $result;
 	}
+
+	public function doCells($cells) {
+        $this->cells = $cells;
+        $name = $this->camel($cells->text());
+        if (!in_array($name, array('where','andWhere','orWhere'))) return parent::doCells($cells);
+
+        //navigational query support, get command from first cell and parameters from the rest 
+        require_once('DoFirstCell.php'); //in shelf folder
+        try {
+		    $doCells = new DoFirstCell($this, $cells);
+		    $doCells->evaluate(false);
+        } catch (Exception $e) {
+	        $this->exception($cells, $e);
+	        return;
+	    }
+	     return $this->doneCells($doCells);
+	}
 	
 	function getArgTypesForMethod($classOrObject, $name, $params) {
 		if ($name == 'retrieveAWithEquals') {
 			$filter = $this->getFilter($params[0], $params[1]);
 			return array('string', 'string', $filter->getValueType());
 		}
+		$sut = $this->getSystemUnderTest();
+		if (in_array($name,array('where','andWhere','orWhere')) && Gen::is_a($sut, 'PntSqlSpec')) {
+			$nav = PntNavigation::getInstance($params[0], $sut->get('itemType'));
+			return array('string', 'string', $nav->getResultType());
+		}
+				
 		return parent::getArgTypesForMethod($classOrObject, $name, $params);
 	}
 
+	protected function tearDown() {
+    	$this->restoreGlobalFilters();
+    }
+	
 	// public functions, for use in tests ------------------------------------------------------
 	
 	function beginTransaction() {
@@ -89,6 +115,27 @@ class PntDoFixture extends DoFixture {
 	function rollbackTransaction() {
 		$qh = new QueryHandler();
 		$qh->rollback(); 
+	}
+	
+	function suspendGlobalFilters() {
+		global $site;
+		$filters = $site->getGlobalFilters();
+		if (!$filters) return null;
+		
+		$this->supendedGlobalFilters = $filters;
+		$filters = array(); //will be passed by reference
+		$site->setGlobalFilters($filters);
+		return true;
+	}
+	
+	function restoreGlobalFilters() {
+		global $site;
+		if (!isSet($this->supendedGlobalFilters)) return null;
+		
+		$filters = $this->supendedGlobalFilters; //will be passed by reference
+		$this->supendedGlobalFilters = null;
+		$site->setGlobalFilters($filters);
+		return true;
 	}
 	
 	function useConverter($stringConverterClass) {
@@ -117,6 +164,33 @@ class PntDoFixture extends DoFixture {
 		$collected = $nav->collectAll(array($sut));
 		if (isSet($collected[$index])) return $collected[$index];
 		return false;
+	}	
+	
+	/** (Navigational query DSL) 
+	 * @return PntSqlSpec for filtering/retrieving/sorting
+	 * @param sring $className >>itemType type of items to filter/retrieve/sort
+	 */
+	function from($className) {
+		if (!class_exists($className)) throw new Exception('class does not exist: '. $className);
+		$clsDes = PntClassDescriptor::getInstance($className);
+		$result = new PntSqlSpec($className);
+		$result->set('itemType', $className);
+		return $result;
+	}
+	
+	/** (Navigational query DSL)
+	 * @return PntSqlSort for sorting the results of this 
+	 * @param string $direction 'ASC' or 'DESC'
+	 * @param string $path the path to sort by
+	 * PRECONDITION: system under test is a PntSqlSpec
+	 * @throws PntReflectionError if path does not exist from System under test>>itemType
+	 */
+	function sortBy($direction, $path) {
+		if ($direction=='ascending') $direction = 'ASC';
+		if ($direction=='descending') $direction = 'DESC';
+		$sut = $this->getSystemUnderTest();
+		$result = $sut->sortBy($path, $direction);
+		return $result;
 	}
 	
 	/** Do navigational query. Sorts by labelSort defined by the specified class.
@@ -140,6 +214,8 @@ class PntDoFixture extends DoFixture {
 		if (!$found) return false;
 		return $found[0];
 	}
+	
+	
 	
 	function makeClone() {
 		$sut = $this->getSystemUnderTest();

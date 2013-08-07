@@ -3,9 +3,8 @@ require_once('DoFixture.php'); //includes fit.Fixture
 require_once('chat/ChatRoom.php');
 require_once('chat/User.php');
 require_once('chat/Room.php');
-//NYI in shelf: fitlibrary.ParamRowFixture;
-//class loading moved to constuctor to use Java stylishc names 
-//and load relative to fixtures dir
+require_once('UserCopy.php');
+require_once('ParamRowFixture.php');
 
 /*
  * @author Rick Mugridge 22/05/2004
@@ -49,8 +48,6 @@ class ChatStart extends DoFixture {
 	/** @return Fixture
 	 * @param String $roomName */
 	public function usersInRoom($roomName) { //COPY:ONE
-		//added by MetaClass
-		throw new Exception('Not yet implemented: ParamRowFixture, UserCopy');
 
 		$users = $this->chat->usersInRoom($roomName); //COPY:ONE
 		$collection = array(); //COPY:ONE

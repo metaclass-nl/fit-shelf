@@ -2,9 +2,8 @@
 require_once 'shelf_RowFixture.php';
 
 /**
- * Copyright (c) 2010-2011 MetaClass Groningen Nederland
- * Licensed under the GNU Lesser General Public License version 3 or later.
- * and GNU General Public License version 3 or later.
+ * Implementation Copyright (c) 2010-2012 H. Verhoeven Beheer BV, holding of MetaClass Groningen Nederland
+ * Licensed under the General Public License version 3 or later.
  * 
  * Inherited limitation: ::eSort and ::cSort use parsed values as array keys, will crash if they are objects
  */
