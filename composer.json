@@ -9,7 +9,7 @@
         {"name": "Henk Verhoeven", "homepage": "http://www.metaclass.nl/" }
     ],
     "require": {
-        "php": ">=5.2.1"
+        "php": ">=5.2.1",
         "metaclass-nl/phpfit": "*"
     },
       "include-path": [""]
