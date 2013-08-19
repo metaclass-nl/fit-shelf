@@ -1,0 +1,16 @@
+{
+    "name": "metaclass-nl/fit-shelf",
+    "type": "library",
+    "description": "reimplementation in PHP5 of the functionality of Fit Library as described in the book "Fit for developing Software" of Rick Mugridge and Ward Cunningham",
+    "keywords": ["testing", "acceptance", "table", "DSL", "Fit"],
+    "homepage": "http://www.metaclass.nl/site/index_php/Menu/224",
+    "license": "GPL",
+    "authors": [
+        {"name": "Henk Verhoeven", "homepage": "http://www.metaclass.nl/" }
+    ],
+    "require": {
+        "php": ">=5.2.1"
+        "metaclass-nl/phpfit": "*"
+    },
+      "include-path": [""]
+}
