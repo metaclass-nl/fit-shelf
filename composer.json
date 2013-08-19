@@ -12,5 +12,5 @@
         "php": ">=5.2.1",
         "metaclass-nl/phpfit": "*"
     },
-      "include-path": [""]
+      "include-path": ["shelf/"]
 }
