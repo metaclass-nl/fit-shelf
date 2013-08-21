@@ -2,7 +2,7 @@
 error_reporting( E_ALL | E_STRICT); //make this less strict if your application requires so
 
 //set_include_path(get_include_path() . PATH_SEPARATOR . 'path to phpFit folder');
-set_include_path(get_include_path() . PATH_SEPARATOR . '../../phpFit');
+set_include_path(get_include_path() . PATH_SEPARATOR . '../../phpfit');
 
 //set_include_path(get_include_path() . PATH_SEPARATOR . 'path to fit shelf folder');
 set_include_path(get_include_path() . PATH_SEPARATOR . '../shelf');
@@ -14,7 +14,8 @@ $output = 'output.html'; //if only file name: in the same folder as the script.
 $fixturesDir = '../../yourapp/fixtures';
 
 //remove this if you do not need the book fixtures 
-if (subStr($_GET['input_filename'],0, 5) == 'book/')
+$input = isSet($argv[1]) ? $argv[1] : $_GET['input_filename'];
+if (subStr($input,0, 5) == 'book/')
 	$fixturesDir = 'book/src';
 
 //only for usage with phpPeanuts
