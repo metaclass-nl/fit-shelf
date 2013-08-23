@@ -1,5 +1,8 @@
+Fit Shelf for PHPFIT
+====================
+
 INTRODUCTION
-============
+------------
 
 Fit Shelf is a reimplementation in PHP of the functionality of Fit Library as described in 
 the book "Fit for developing Software" of Rick Mugridge and Ward Cunningham, 
@@ -12,8 +15,19 @@ would have taken too much work. With only 63.5 KB in PHP source files[1] Fit She
 much simpeler. As its name suggest is does not pretend to be a complete library,
 but rather a small shelf. But easyer to understand, use and port. And written in PHP!
 
+
+SECURITY
+--------
+
+Do not install in a production environment.
+
+WARNING: Fit Shelf allows tests to access arbitrary properties and methods on the object under test. 
+It has no notion of authorization. Allowing end users to run self-modified tests may expose sensitive 
+data, cause fatal errors and leave the system in an undefined state. 
+
+
 INSTALLATION AND CONFIGURATION
-==============================
+------------------------------
 
 - *With Composer and Shelf*    
 
@@ -26,7 +40,7 @@ INSTALLATION AND CONFIGURATION
   Requires PHP >= 5.1.
 
 SPECIAL FEATURES
-================
+----------------
 
 1. Mixed data typing
 
@@ -104,7 +118,7 @@ SPECIAL FEATURES
 	datatypes of phpPeanuts are supported.
 
 RELEASE NOTES
-=============
+-------------
 
 Version 0.1 (beta 1) has been tested sucessfully with the tests and fixtures of the 
 Historical Data Management (HDM) extension to the PhpPeanuts framework.
@@ -126,7 +140,7 @@ Some smaller refactorings may be made with respect to reoccurring code.
 
    
 SUPPORT (Dutch)
-===============
+---------------
 
 MetaClass biedt hulp en ondersteuning binnen Nederland bij onderhoud 
 en ontwikkeling van software, tests en fixtures. 
@@ -134,11 +148,11 @@ Voor meer informatie kijk op http://www.metaclass.nl/
 
 
 COPYRIGHT AND LICENCE
-=====================
+---------------------
 
-Courtesy to Rick Mugridge, http://www.RimuResearch.com for the 
-functional specification of Fit Library (http://sourceforge.net/projects/fitlibrary/) 
-and the ideas behind it to which MetaClass claims no rights.
+Courtesy to Rick Mugridge for the functional specification of Fit Library 
+(http://sourceforge.net/projects/fitlibrary/) and the ideas behind it 
+to which MetaClass claims no rights.
  
 This implementation (Fit Shelf) is Copyright (c) 2010-2012 H. Verhoeven Beheer BV, 
 holding of MetaClass Groningen Nederland.
