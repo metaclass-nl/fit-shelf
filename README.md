@@ -138,6 +138,8 @@ see PHPFIT_TypeAdapter_PhpTolerant.php.
 
 Some smaller refactorings may be made with respect to reoccurring code.
 
+Also see the [ChangeLog](doc/ChangeLog.md) in the doc folder.
+
    
 SUPPORT (Dutch)
 ---------------
