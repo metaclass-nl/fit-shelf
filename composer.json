@@ -15,8 +15,8 @@
     "include-path": ["shelf/", "script/"],
     "autoload": {
         "psr-0": {
-            "shelf\\": "shelf/",
-            "chat\\": "script/chat/",
+            "shelf\\": "",
+            "chat\\": "script/",
             "": "script/book/src/"
         }
     }
