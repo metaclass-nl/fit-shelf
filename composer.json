@@ -12,5 +12,14 @@
         "php": ">=5.1.6",
         "metaclass-nl/phpfit": "*"
     },
-      "include-path": ["shelf/", "script/"]
+    "include-path": ["shelf/", "script/"],
+    "autoload": {
+        "psr-0": {
+            "shelf\\": "shelf/",
+            "chat\\": "script/chat/",
+            "": "script/book/src/"
+        }
+    }
+    
+      
 }
