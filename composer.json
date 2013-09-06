@@ -17,7 +17,7 @@
         "psr-0": {
             "shelf\\": "",
             "chat\\": "script/",
-            "": "script/book/src/"
+            "\\": "script/book/src/"
         }
     }
     
