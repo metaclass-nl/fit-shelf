@@ -13,9 +13,6 @@ $loader = new ClassLoader();
 $loader->setSpaceMap($fitConfig->nameSpacedMap);
 $loader->registerAutoLoad();
 
-//PHPFIT_FixtureLoader::setFixturesDirectory($fixturesDir);
-//PHPFIT_FixtureLoader::addFixturesDirectory('');
-
 $unSafe = $_GET['input_filename'];
 forEach($fitConfig->exampleDirs as $safe) 
 {

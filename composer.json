@@ -14,9 +14,9 @@
     },
     "autoload": {
         "psr-0": {
-            "fitshelf\\": "src/",
-            "fitbook\\": "src/",
-            "PHPFIT_TypeAdapter_": "src/"
+            "fitshelf\\": "src",
+            "": "src",
+            "PHPFIT_TypeAdapter_": "src"
         }
     }
     
