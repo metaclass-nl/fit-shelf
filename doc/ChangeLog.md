@@ -1,5 +1,17 @@
+under development  
+-----------------  
+- introduced name spaces fitshelf, chat and PHPFIT_TypeAdapter  
+- reorganised folders  
+- added PSR-0 classloader  
+- adapted scripts and config  
+- added examples/index.php  
+- adapted composer.json  
+- removed support for phpPeanuts framework    
+- In tests shelf. prefix is no longer supported, but you can use fitshelf.     
+  It will be mapped by PHPFIT to fitshelf\ namespace.  
+
 v0.3
----
+----
 - added composer.json
 - adapted README.md to install and use with Composer from fit-skeleton,
   extracting doc/ConfigManually.md

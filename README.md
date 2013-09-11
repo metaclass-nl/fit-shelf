@@ -11,7 +11,7 @@ excellent book and http://fit.c2.com.
 
 Fit shelf is not a port of Fit Library. The reason to reimplement was that the porting 
 of the  1175 KB java source files of Fit Library (not including Fit and examples) 
-would have taken too much work. With only 63.5 KB in PHP source files[1] Fit Shelf is 
+would have taken too much work. With only 53.2 KB in PHP source files[1] Fit Shelf is 
 much simpeler. As its name suggest is does not pretend to be a complete library,
 but rather a small shelf. But easyer to understand, use and port. And written in PHP!
 
@@ -29,7 +29,7 @@ data, cause fatal errors and leave the system in an undefined state.
 INSTALLATION AND CONFIGURATION
 ------------------------------
 
-- *With Composer and Shelf*    
+- *With Composer*    
 
   See Readme.md of the [fit-skeleton package](https://github.com/metaclass-nl/fit-skeleton).  
   Requires PHP >= 5.3.2.
@@ -37,7 +37,7 @@ INSTALLATION AND CONFIGURATION
 - *Manually*  
   
   See the [instructions for manual configuration](doc/ConfigManually.md)  
-  Requires PHP >= 5.1.
+  Requires PHP >= 5.3.2.
 
 SPECIAL FEATURES
 ----------------
@@ -81,12 +81,11 @@ SPECIAL FEATURES
 	
 	In order to support that, Shelf uses two layers of adapters, one 
 	for the meta model, and a second for the actual typing. Currently
-	three MetaModel adapters are available:
+	two MetaModel adapters are available:
 	- PHPFIT_TypeAdapter_PhpTolerant for ordinary PHP objects using member variables
 	  for properties. This is the default adapter used by Shelf fixtures
 	- PHPFIT_TypeAdapter_BeanTolerant for Beans-like objects using getter and setter 
-	  methods for accessing properties, like those from book examples.
-	- PHPFIT_TypeAdapter_PntTolerant for usage with phpPeanuts.
+	  methods for accessing properties.
 	
 	You may activate an adapter from your fixture class by adding the following method:
 	
@@ -95,43 +94,39 @@ SPECIAL FEATURES
 			shelf_ClassHelper::adapterType('BeanTolerant');
 		}
 		
-	Usually your tests will start with activating some subclass of DoFixture and 
+	Usually your tests will start with activating some subclass of fitshelf\DoFixture and 
 	that fixture will run this method. From then on the other shelf fixtures that 
-	your tests use will also use this adapter.
+	your tests use will also use this adapter. Fixtures directly extending those
+	from PHPFIT need to add another method:
+	
+		static function getType($classOrObject, $name, $property) {
+			return ClassHelper::adapterType();
+		}
+		
+	Fit Shelf provides subclasses for serveral PHPFIT fixtures that already have this method.
 	
 	If the meta model of your own application (or framework) is different
 	you may implement your own type adapter using the adapters that come
-	with shelf as examples. Warning: The adapers will be refactored in order
+	with shelf as examples. If you use Composer you may autoload them using
+	the ClassLoader of Composer or the one from Fit Shelf.  
+	Warning: The adapers will be refactored in order
 	to support strict typing for the php metamodel.
-
-4. Support for PhpPeanuts
-
-	For usage with the phpPeanuts framework (http://phppeanuts.org).
-	Usually your tests will start with activating 
-	your subclass of PntDoFixture. This will activate PHPFIT_TypeAdapter_PntTolerant
-	so that you can use phpPeanuts properties on the system under test.
-	
-	Some special methods are available from PntDoFixture to allow your tests
-	to create new peanuts, validate, save, retrieve and delete them. Using the
-	phpPeanuts meta data, type-correct stringconversions will be done by
-	StingConverter instead of the PhpFit datatype adapters. This way all
-	datatypes of phpPeanuts are supported.
 
 RELEASE NOTES
 -------------
 
+This beta has been adapted to PSR-0 name spacing and class loading. 
+If you have Fixtures running on a previous version of Fit Shelf you
+will have to adapt them.
+
 Version 0.1 (beta 1) has been tested sucessfully with the tests and fixtures of the 
 Historical Data Management (HDM) extension to the PhpPeanuts framework.
 
-The beta does not include CalculateFixture and SetupFixture.
+This beta does not include CalculateFixture and SetupFixture.
 
-The beta does not include all examples ported from the tests described 
+This beta does not include all examples ported from the tests described 
 in the book "Fit for developing Software". Please help by porting more
 tests that are meant to run on Fit Library.
-
-The beta needs to be adapted to PSR-0 name spacing and class loading.
-This requires a reorganization of the folder structure and locations of the classes,
-and therefore will break existing code.  
 
 The Adapters should be refactored in order to support strict typing,
 see PHPFIT_TypeAdapter_PhpTolerant.php.
@@ -182,8 +177,8 @@ EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGES.
 
 
-[1]: not including CalculateFixture and SetupFixture but including the extensions for phpPeanuts.  
-     Fit Shelf does not support (usage from) Fitnesse. Is not inteded to work the
+[1]: not including CalculateFixture and SetupFixture.  
+     Fit Shelf is not tested with Fitnesse. Is not inteded to work the
      same as Fit Library, only to work like descibed in the book, but with the 
-     special features as described below.
+     special features as described here.
 
