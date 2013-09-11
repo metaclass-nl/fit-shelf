@@ -3,8 +3,7 @@ namespace fitshelf;
 
 require_once('PHPFIT/Fixture.php'); //needs to be in include_path set in php.ini
 require_once 'PHPFIT/TypeAdapter.php'; //needs to be in include_path set in php.ini
-//spl_autoload_call('PHPFIT_TypeAdapter_PhpTolerant');
-//require_once('PHPFIT_TypeAdapter_PhpTolerant.php');  //must be included explicitly
+//require_once('PHPFIT_TypeAdapter_PhpTolerant.php');  ///included by autoloading
 
 /**
  * Implementation Copyright (c) 2010-2012 H. Verhoeven Beheer BV, holding of MetaClass Groningen Nederland

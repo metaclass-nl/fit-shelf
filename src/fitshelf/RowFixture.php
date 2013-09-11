@@ -2,7 +2,7 @@
 namespace fitshelf;
 
 require_once('PHPFIT/Fixture/Row.php');
-//require_once('PHPFIT_TypeAdapter_PhpTolerant.php');  //must be included explicitly
+//require_once('PHPFIT_TypeAdapter_PhpTolerant.php');  //included by autoloading
 
 /** 
  * Implementation Copyright (c) 2010-2012 H. Verhoeven Beheer BV, holding of MetaClass Groningen Nederland

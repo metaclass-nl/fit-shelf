@@ -1,6 +1,8 @@
 <?php 
 namespace fitshelf;
 
+require_once('PHPFIT/Fixture/Column.php');
+
 //2DO: decide which superclass
 
 /** 
