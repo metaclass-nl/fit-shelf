@@ -91,7 +91,7 @@ SPECIAL FEATURES
 	
 		protected function interpretTablesInit() {
 			parent::interpretTablesInit();
-			shelf_ClassHelper::adapterType('BeanTolerant');
+			fitshelf\ClassHelper::adapterType('BeanTolerant');
 		}
 		
 	Usually your tests will start with activating some subclass of fitshelf\DoFixture and 
@@ -100,7 +100,7 @@ SPECIAL FEATURES
 	from PHPFIT need to add another method:
 	
 		static function getType($classOrObject, $name, $property) {
-			return ClassHelper::adapterType();
+			return fitshelf\ClassHelper::adapterType();
 		}
 		
 	Fit Shelf provides subclasses for serveral PHPFIT fixtures that already have this method.
@@ -118,9 +118,6 @@ RELEASE NOTES
 This beta has been adapted to PSR-0 name spacing and class loading. 
 If you have Fixtures running on a previous version of Fit Shelf you
 will have to adapt them.
-
-Version 0.1 (beta 1) has been tested sucessfully with the tests and fixtures of the 
-Historical Data Management (HDM) extension to the PhpPeanuts framework.
 
 This beta does not include CalculateFixture and SetupFixture.
 

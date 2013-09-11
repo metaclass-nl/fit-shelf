@@ -10,7 +10,7 @@ TO INSTALL AND RUN EXAMPLES
 
 4. Download or fetch Fit Shelf from https://github.com/metaclass-nl/fit-shelf
 
-5.  Extract and/or upload the shelf subfolder from the fit_shelf folder to a folder on your http server
+5. Extract and/or upload the shelf subfolder from the fit_shelf folder to a folder on your http server
 
 6. Edit the examples/config/config.php file in the folder you copied in step 5 and correct the include paths
    with respect to the location of phpfit on your server.
@@ -30,8 +30,9 @@ TO RUN YOUR OWN TESTS
 =====================
 
 1. Make your own fixtures folder and add it to $fitConfig->nameSpacedMap. 
-   Be aware that only one folder will be used per (non)namespace for autoloading. 
-   However, PHPFIT can load unnamespaced fixtures from aditional folders if you call
+   Be aware that only one folder will be used per (non)namespace for autoloading. fitshelf\ClassLoader
+   does not support arrays with folder paths (if you want that, use Composer or your own ClassLoader). 
+   However, PHPFIT can load unnamespaced fixtures (incuding PEAR style prefixed) from aditional folders if you call
    PHPFIT_FixtureLoader::addFixturesDirectory or from the include path.
    
 2. Upload you own Fixture files to your fixtures folder

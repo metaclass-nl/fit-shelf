@@ -10,7 +10,7 @@ if( count( $argv ) < 2 ) {
 	return 1;
 }
 
-$loader = new ClassLoader();
+$loader = new fitshelf\ClassLoader();
 $loader->setSpaceMap($fitConfig->nameSpacedMap);
 $loader->registerAutoLoad();
 
