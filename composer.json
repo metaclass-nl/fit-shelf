@@ -15,7 +15,7 @@
     "autoload": {
         "psr-0": {
             "fitshelf\\": "src",
-            "": "src",
+            "": "examples/src",
             "PHPFIT_TypeAdapter_": "src"
         }
     }

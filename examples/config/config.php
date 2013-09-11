@@ -23,26 +23,4 @@ $fitConfig->nameSpacedMap = array(
 //this file must be writable for PHP
 $fitConfig->output = 'output.html';
 
-
-//only for usage with phpPeanuts
-/*
-include ("../classes/classSite.php");
-$site = new Site('fit');
-$site->startSession();
-$sm = $site->getSecurityManager();
- 
-//if (!$sm->isAuthenticated($_REQUEST)) {
-
-	//only for debugging:
-		//$auth = $sm->getAuthenticator();
-		//print $auth->getSessionDataKey();
-		//Gen::show($_SESSION);
-
-	//$site->forwardToLoginPage($requestData);
-
-	//HACK: login page does not work here
-	die( "First Log in to the main application");
-}
-*/
-
 ?>
