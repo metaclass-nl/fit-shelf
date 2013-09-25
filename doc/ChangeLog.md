@@ -1,4 +1,4 @@
-under development  
+v0.4
 -----------------  
 - introduced name spaces fitshelf, chat and PHPFIT_TypeAdapter  
 - reorganised folders  
