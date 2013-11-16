@@ -1,4 +1,5 @@
 v0.5
+----
 - renamed examples/tests to examples/input
 - Added output of examples to the repository
 - Added tests folder with phpunit.xml and bootstrap.php for testing with PHPUnit
@@ -6,7 +7,7 @@ v0.5
 - Added instructions for running unit tests to doc/ConfigManually.md
 
 v0.4
------------------  
+----  
 - introduced name spaces fitshelf, chat and PHPFIT_TypeAdapter  
 - reorganised folders  
 - added PSR-0 classloader  
