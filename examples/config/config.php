@@ -5,7 +5,7 @@ set_include_path(get_include_path(). PATH_SEPARATOR. '../../phpfit'); //replace 
 
 $fitConfig = new StdClass();
 
-$fitConfig->exampleDirs["Fit Shelf"] = "tests";
+$fitConfig->exampleDirs["Fit Shelf"] = "input";
 $fitConfig->exampleDirs["PHPFIT"] = "../../phpfit/examples/input";
 //add your own input folders here
 

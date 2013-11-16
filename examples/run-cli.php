@@ -1,5 +1,5 @@
 <?php
-//usage: php run-cli.php tests/Fig1TestDisconnect.html
+//usage: php run-cli.php input/Fig1TestDisconnect.html
 require_once 'config/config.php';
 
 require_once '../src/fitshelf/ClassLoader.php';

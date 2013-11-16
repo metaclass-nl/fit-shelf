@@ -1,13 +1,14 @@
 <?php
 $GLOBALS['SIMPLE_SUMMARY'] = 1;
 
-class ExampleTest extends UnitTestCase {
+class ExampleTest extends PHPUnit_Framework_TestCase {
     public $mustFilename;
     public $isFilename;
     public $runFilename;
 
     public function setUp() {
-        $this->isFilename = "../examples/output.html";
+        global $fitConfig;
+        $this->isFilename = $fitConfig->output;
     }
 
     public function tearDown() {
@@ -16,7 +17,7 @@ class ExampleTest extends UnitTestCase {
         $must = str_replace("\r\n", "\n", file_get_contents($this->mustFilename, true));
         $is = str_replace("\r\n", "\n", file_get_contents($this->isFilename, true));
 
-        $this->assertEqual($is, $must);
+        $this->assertEquals($is, $must);
     }
 
     public function testFig1TestDisconnect() {
@@ -40,7 +41,5 @@ class ExampleTest extends UnitTestCase {
     }
 
 }
-
-//unset($GLOBALS['SIMPLE_SUMMARY']);
 
 ?>
